@@ -93,16 +93,16 @@ namespace CollectionsMasterConsoleUI
             //TODO: Create a method that prints if a user number is present in the list
             //Remember: What if the user types "abc" accident your app should handle that!
             Console.WriteLine("What number will you search for in the number list?");
-            var userIntQuery = int.TryParse(Console.ReadLine(), out int userInput);
-            if (!userIntQuery)
+            int userInput;
+            bool userIntQuery;
+            do
             {
-                Console.WriteLine("That is not a integer. Please try again.");
+                userIntQuery = int.TryParse(Console.ReadLine(), out userInput);
+                if (!userIntQuery)
+                    Console.WriteLine("That is not an integer. Please try again.");
             }
-            else
-            {
-                NumberChecker(listOfFifty, userInput);
-            }
-
+            while (!userIntQuery);
+            NumberChecker(listOfFifty, userInput);
 
 
             Console.WriteLine("-------------------");
